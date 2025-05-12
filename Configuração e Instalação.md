@@ -40,25 +40,21 @@ Descompacte esse arquivo em um diretório à sua escolha.
 Abra o terminal.
 
 Navegue até o diretório onde os arquivos foram descompactados:
-
 ```
-bash
-Copiar
-Editar
+cd: bash
 cd <caminho_para_a_pasta_descompactada>
 ```
+
 Inicialize os serviços do Airflow:
-
-bash
-Copiar
-Editar
+```
 docker compose up airflow-init
-Após isso, execute:
+```
 
-bash
-Copiar
-Editar
+Após isso, execute:
+``` 
 docker compose up -d
+```
+
 A interface do Airflow estará disponível em http://localhost:<porta>.
 
 🔑 Credenciais Padrão do Airflow:
