@@ -75,9 +75,11 @@ Clique em + Create e preencha para adicionar uma nova conexão:
 - Login: ```root```
 - Password:	```example```
 
-- **Instalação do Provider MongoDB (se necessário):**
-    - Abra um novo terminal ou prompt de comando.
-    - Navegue até o diretório onde os arquivos descompactados foram salvos:Bash
+
+**Instalação do Provider MongoDB (se necessário):**
+  - Abra um novo terminal ou prompt de comando.
+    
+  - Navegue até o diretório onde os arquivos descompactados foram salvos:Bash
         
         `cd <caminho_para_a_pasta_descompactada>`
         
@@ -89,19 +91,19 @@ Clique em + Create e preencha para adicionar uma nova conexão:
         
         `pip install apache-airflow-providers-mongo`
         
-    - Saia do container:Bash
+     - Saia do container:Bash
         
-        `exit`
+         `exit`
         
     - Reinicie o serviço `airflow-apiserver` para aplicar as alterações:Bash
         
         `docker-compose restart airflow-apiserver`
         
-- No campo "Extra Fields (JSON)", adicione a seguinte configuração:JSON
+    - No campo "Extra Fields (JSON)", adicione a seguinte configuração:JSON
     
-    `{ "srv": null, "authSource": "admin", "ssl": false, "allow_insecure": null }`
+        `{ "srv": null, "authSource": "admin", "ssl": false, "allow_insecure": null }`
     
-- Clique no botão "Save" para salvar a conexão MongoDB.
+    - Clique no botão "Save" para salvar a conexão MongoDB.
 
 
 
