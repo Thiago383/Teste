@@ -70,7 +70,7 @@ Clique em + Create e preencha para adicionar uma nova conexão:
 
 - Conn Id: 	```mongodb_default```
 - Conn Type: ```Mongo```
-- Host: ```mongodb``` este é o nome do serviço MongoDB definido no arquivo docker-compose.yml
+- Host: ```mongodb``` este é o nome do serviço MongoDB definido no arquivo ```docker-compose.yml```
 - Schema:	```admin```
 - Login: ```root```
 - Password:	```example```
