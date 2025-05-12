@@ -1,4 +1,9 @@
-# 📘 Documentação Técnica — Instalação e Configuração: MongoDB (Docker), Mongo Compass e Apache Airflow
+# 📘 Documentação Técnica
+
+— Instalação e Configuração: 
+- MongoDB (Docker)
+- Mongo Compass 
+- Apache Airflow
 Este repositório descreve os procedimentos técnicos para instalação e configuração dos seguintes componentes:
 
 MongoDB via Docker
