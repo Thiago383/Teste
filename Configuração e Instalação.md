@@ -1,4 +1,4 @@
-📘 Documentação Técnica — Instalação e Configuração: MongoDB (Docker), Mongo Compass e Apache Airflow
+# 📘 Documentação Técnica — Instalação e Configuração: MongoDB (Docker), Mongo Compass e Apache Airflow
 Este repositório descreve os procedimentos técnicos para instalação e configuração dos seguintes componentes:
 
 MongoDB via Docker
@@ -75,76 +75,6 @@ Host	mongodb
 Schema	admin
 Login	root
 Password	example
-
-⚠️ Se a opção "Mongo" não estiver disponível:
-No terminal, acesse o container:
-
-bash
-Copiar
-Editar
-cd <caminho_para_a_pasta_descompactada>
-docker exec -it airflow-airflow-apiserver-1 bash
-Instale o provider Mongo:
-
-bash
-Copiar
-Editar
-pip install apache-airflow-providers-mongo
-exit
-Reinicie o serviço:
-
-bash
-Copiar
-Editar
-docker-compose restart airflow-apiserver
-No campo Extra (JSON) da conexão, adicione:
-
-json
-Copiar
-Editar
-{
-  "srv": null,
-  "authSource": "admin",
-  "ssl": false,
-  "allow_insecure": null
-}
-Clique em Save.
-
-6. Configuração do Mongo Compass
-Abra o Mongo Compass.
-
-Clique em Connect.
-
-Use a seguinte URI de conexão:
-
-bash
-Copiar
-Editar
-mongodb://root:example@localhost:27017/admin
-Clique em Connect.
-
-✅ Conclusão
-Ao final desse processo, você terá:
-
-MongoDB rodando via Docker
-
-Acesso via Mongo Compass
-
-Integração funcional com Apache Airflow
-
-📂 Estrutura Esperada dos Arquivos
-(Sugestão para o repositório)
-
-Copiar
-Editar
-📁 seu-repositorio/
-├── docker-compose.yml
-├── Dockerfile
-├── airflow/
-│   ├── dags/
-│   ├── logs/
-│   └── plugins/
-└── README.md  ← (este arquivo)
 
 
 
