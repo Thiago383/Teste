@@ -244,16 +244,3 @@ Processo segue o objetivo original com:
 4. Geração de `payloads` JSON
 5. Publicação nas filas por setor
 
-### ⚙️ Setup
-
-> Pré-requisitos: Docker, Docker Compose, Mongo Compass
-
-```bash
-# Inicializar Airflow e MongoDB
-docker compose up airflow-init
-docker compose up -d
-
-# Acessar Airflow
-http://localhost:<porta>
-Usuário: airflow
-Senha: airflow
