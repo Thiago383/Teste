@@ -58,8 +58,8 @@ docker compose up -d
 * O ambiente Docker com Airflow e MongoDB estará agora em execução. Para acessar a interface web do Airflow, localize a porta mapeada para o serviço web no Docker Desktop ou através da inspeção dos containers. A URL será similar a http://localhost:<porta>.
 
 * Credenciais Padrão do Airflow:
-- Username: airflow
-- Password: airflow
+  - Username: airflow
+  - Password: airflow
   
 ### 5. Configuração da Conexão MongoDB no Airflow
 Acesse a interface web do Airflow.
