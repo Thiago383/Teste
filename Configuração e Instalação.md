@@ -2,7 +2,7 @@
 
 ## 📌 Sumário
 
-- [1. Business Understanding](#1-business-understanding)
+- [1. Apache Airflow](#1-Apache Airflow)
 - [2. Data Understanding](#2-data-understanding)
 - [3. Data Preparation](#3-data-preparation)
 - [4. Modeling](#4-modeling)
@@ -16,7 +16,7 @@ MongoDB via Docker
 
 Mongo Compass (interface gráfica)
 
-Apache Airflow com integração ao MongoDB
+#1- Apache Airflow com integração ao MongoDB
 
 ✅ Pré-requisitos
 Docker instalado no sistema operacional
