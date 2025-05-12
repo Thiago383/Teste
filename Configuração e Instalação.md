@@ -81,7 +81,7 @@ Clique em + Create e preencha para adicionar uma nova conexão:
     
   - Navegue até o diretório onde os arquivos descompactados foram salvos:
         
-        cd <caminho_para_a_pasta_descompactada>
+     ```cd <caminho_para_a_pasta_descompactada>```
         
   - Execute o seguinte comando para acessar o container `airflow-apiserver`:
         
