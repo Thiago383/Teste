@@ -1,55 +1,44 @@
-
-# 📘 Documentação Técnica — Instalação e Configuração: MongoDB (Docker), Mongo Compass e Apache Airflow
-
+📘 Documentação Técnica — Instalação e Configuração: MongoDB (Docker), Mongo Compass e Apache Airflow
 Este repositório descreve os procedimentos técnicos para instalação e configuração dos seguintes componentes:
 
-- **MongoDB** via Docker  
-- **Mongo Compass** (interface gráfica)  
-- **Apache Airflow** com integração ao MongoDB
+MongoDB via Docker
 
----
+Mongo Compass (interface gráfica)
 
-## ✅ Pré-requisitos
+Apache Airflow com integração ao MongoDB
 
-- Docker instalado no sistema operacional  
-  👉 [Documentação Oficial do Docker](https://www.docker.com)
+✅ Pré-requisitos
+Docker instalado no sistema operacional
+👉 Documentação Oficial do Docker
 
-- Acesso à linha de comando (terminal, shell ou prompt de comando)
+Acesso à linha de comando (terminal, shell ou prompt de comando)
 
----
-
-## 🚀 Passo a Passo
-
-### 1. Instalação do Docker
-
+🚀 Passo a Passo
+1. Instalação do Docker
 Siga as instruções disponíveis no site oficial:
 
-🔗 [Instalar Docker](https://www.docker.com)
+🔗 Instalar Docker
 
----
+2. Instalação do Mongo Compass
+Acesse: Download Mongo Compass
 
-### 2. Instalação do Mongo Compass
+Faça o download da versão adequada ao seu sistema.
 
-1. Acesse: [Download Mongo Compass](https://www.mongodb.com/try/download/compass)  
-2. Faça o download da versão adequada ao seu sistema.  
-3. Execute o instalador e siga as instruções.
+Execute o instalador e siga as instruções.
 
----
+3. Preparação dos Arquivos de Configuração
+Você deve receber um arquivo .zip com os arquivos necessários (ex: docker-compose.yml, Dockerfile, etc).
 
-### 3. Preparação dos Arquivos de Configuração
+Descompacte esse arquivo em um diretório à sua escolha.
 
-Você deve receber um **arquivo .zip** com os arquivos necessários (ex: `docker-compose.yml`, `Dockerfile`, etc).
+4. Inicialização do Ambiente Docker
+Abra o terminal.
 
-- Descompacte esse arquivo em um diretório à sua escolha.
+Navegue até o diretório onde os arquivos foram descompactados:
 
----
-
-### 4. Inicialização do Ambiente Docker
-
-1. Abra o terminal.  
-2. Navegue até o diretório onde os arquivos foram descompactados:
-
-```bash
+bash
+Copiar
+Editar
 cd <caminho_para_a_pasta_descompactada>
 Inicialize os serviços do Airflow:
 
@@ -144,6 +133,8 @@ Acesso via Mongo Compass
 Integração funcional com Apache Airflow
 
 📂 Estrutura Esperada dos Arquivos
+(Sugestão para o repositório)
+
 Copiar
 Editar
 📁 seu-repositorio/
@@ -153,12 +144,8 @@ Editar
 │   ├── dags/
 │   ├── logs/
 │   └── plugins/
-└── README.md
-yaml
-Copiar
-Editar
+└── README.md  ← (este arquivo)
 
----
 
 
 
