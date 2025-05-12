@@ -41,10 +41,12 @@ Abra o terminal.
 
 Navegue até o diretório onde os arquivos foram descompactados:
 
+```
 bash
 Copiar
 Editar
 cd <caminho_para_a_pasta_descompactada>
+```
 Inicialize os serviços do Airflow:
 
 bash
