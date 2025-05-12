@@ -34,26 +34,25 @@ Escola DNC
 
 ### 1.1 Objetivo do Negócio
 
-Automatizar a classificação de empresas por CNAE com uso de:
+O objetivo deste projeto é automatizar a **classificação de empresas por CNAE** (Classificação Nacional de Atividades Econômicas), a partir de bases atualizadas periodicamente. Sempre que uma **nova empresa** for detectada nos dados, uma **notificação** será enviada e a empresa será incluída na **fila de processamento**, categorizada por seu setor (com base no CNAE).
+
+A automação do processo será realizada com o uso de **Airflow** para orquestração e **RabbitMQ** para gerenciar as filas por categoria.
 
 - 📅 Dados atualizados periodicamente
 - 🔔 Notificações de novas empresas
 - 🧵 Fila de processamento segmentada por setor
 
-Tecnologias utilizadas:
-- Apache Airflow (orquestração)
-- RabbitMQ (mensageria)
-- MongoDB (banco de dados)
-- Python + Pandas (manipulação dos dados)
 
 ### 1.2 Avaliação da Situação
 
 - **Stakeholders:** Equipes de dados, ETL, risco e gestão.
-- **Plataformas utilizadas:**
-  - Apache Airflow, Docker
-  - MongoDB + Mongo Compass
-  - RabbitMQ
-  - Python, Pandas, NumPy
+- **Tecnologias utilizadas:**
+    - Apache Airflow  (orquestração)
+    - Mongo DB via Docker (Infraestrutura de Banco de Dados)
+    - Mongo Compass (Interface Gráfica)
+    - RabbitMQ (mensageria)
+    - Python (desenvolvimento)
+    - Pandas & NumPy (manipulação dos dados)
 - **Benefícios esperados:**
   - 🚀 Eficiência no fluxo de dados
   - 🔄 Atualização automática
