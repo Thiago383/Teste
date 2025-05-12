@@ -2,13 +2,7 @@
 
 ## 📌 Sumário
 
-- [1. Apache Airflow](#1-Apache Airflow)
-- [2. Data Understanding](#2-data-understanding)
-- [3. Data Preparation](#3-data-preparation)
-- [4. Modeling](#4-modeling)
-- [5. Evaluation](#5-evaluation)
-- [6. Deployment](#6-deployment)
-- [7. Notas Técnicas](#7--notas-técnicas)
+
 
 Este repositório descreve os procedimentos técnicos para instalação e configuração dos seguintes componentes:
 
@@ -16,33 +10,33 @@ MongoDB via Docker
 
 Mongo Compass (interface gráfica)
 
-#1- Apache Airflow com integração ao MongoDB
+Apache Airflow com integração ao MongoDB
 
-✅ Pré-requisitos
+## ✅ Pré-requisitos
 Docker instalado no sistema operacional
 👉 Documentação Oficial do Docker
 
 Acesso à linha de comando (terminal, shell ou prompt de comando)
 
-🚀 Passo a Passo
-1. Instalação do Docker
+## 🚀 Passo a Passo
+### 1. Instalação do Docker
 Siga as instruções disponíveis no site oficial:
 
 🔗 Instalar Docker
 
-2. Instalação do Mongo Compass
+### 2. Instalação do Mongo Compass
 Acesse: Download Mongo Compass
 
 Faça o download da versão adequada ao seu sistema.
 
 Execute o instalador e siga as instruções.
 
-3. Preparação dos Arquivos de Configuração
+### 3. Preparação dos Arquivos de Configuração
 Você deve receber um arquivo .zip com os arquivos necessários (ex: docker-compose.yml, Dockerfile, etc).
 
 Descompacte esse arquivo em um diretório à sua escolha.
 
-4. Inicialização do Ambiente Docker
+### 4. Inicialização do Ambiente Docker
 Abra o terminal.
 
 Navegue até o diretório onde os arquivos foram descompactados:
@@ -72,7 +66,7 @@ Copiar
 Editar
 Username: airflow
 Password: airflow
-5. Configuração da Conexão MongoDB no Airflow
+### 5. Configuração da Conexão MongoDB no Airflow
 Acesse a interface web do Airflow.
 
 Vá em Admin > Connections.
