@@ -59,25 +59,22 @@ docker compose up -d
 
 🔑 Credenciais Padrão do Airflow:
 
-makefile
-Copiar
-Editar
-Username: airflow
-Password: airflow
+- Username: airflow
+- Password: airflow
+  
 ### 5. Configuração da Conexão MongoDB no Airflow
 Acesse a interface web do Airflow.
 
 Vá em Admin > Connections.
 
-Clique em + Create e preencha:
+Clique em + Create e preencha para adicionar uma nova conexão:
 
-Campo	Valor
-Conn Id	mongodb_default
-Conn Type	Mongo
-Host	mongodb
-Schema	admin
-Login	root
-Password	example
+Conn Id: 	mongodb_default
+Conn Type: 	Mongo
+Host:	mongodb, este é o nome do serviço MongoDB definido no arquivo docker-compose.yml
+Schema:	admin
+Login:	root
+Password:	example
 
 
 
