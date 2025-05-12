@@ -57,28 +57,29 @@ A automação do processo será realizada com o uso de **Airflow** para orquestr
   - 🚀 Eficiência no fluxo de dados
   - 🔄 Atualização automática
   - 📦 Categorias bem definidas
-- **Restrições:** Dados inconsistentes ou desatualizados
+- **Restrições:** As bases de dados podem conter registros inconsistentes ou desatualizados, exigindo verificação contínua de qualidade.
 
 ### 1.3 Metas
 
-- Detectar e categorizar novas empresas por CNAE
-- Enviar dados via filas RabbitMQ por setor
-- Automatizar tudo com Airflow
+- Identificar e categorizar automaticamente empresas novas por CNAE
+- Monitorar a chegada de novos registros periodicamente
+- Enviar os dados organizados em filas temáticas via RabbitMQ
 
 ### 1.4 Plano do Projeto
 
-1. 📥 Coletar dados
-2. 🔎 Identificar novas empresas
+1. 📥 Coletar e validar dados de entrada
+2. 🔎 Identificar registros novos
 3. 🏷️ Categorizar por CNAE
-4. 📨 Enviar para RabbitMQ
-5. 🛠️ Automatizar com DAGs
-6. 🧩 Monitorar e ajustar
+4. 📨 Enviar dados organizados para filas específicas no RabbitMQ
+5. 🛠️ Automatizar via Airflow (com DAG diária)
+6. 🧩 Monitorar logs e filas para garantir robustez
 
 ---
 
 ## 2. Data Understanding
 
-### 2.1 Fonte dos Dados
+### 2.1 Coleta Inicial dos Dados
+As bases de dados são arquivos CSV fornecidos por um sistema externo ou API que contém o CNPJ, Nome, CNAE principal e secundário, entre outros campos.
 
 Arquivos CSV com:
 
