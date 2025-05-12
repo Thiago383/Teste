@@ -1,2 +1,244 @@
-# Teste
-Teste
+# 📊 Categorização de Empresas por CNAE com Airflow e RabbitMQ
+
+> Projeto desenvolvido para automatizar a classificação de empresas com base no CNAE, integrando Apache Airflow, MongoDB e RabbitMQ.
+
+---
+
+## 👤 Autor
+
+**Seu Nome Aqui**
+
+## 🏫 Instituição
+
+Escola DNC
+
+## 📅 Data
+
+2025
+
+---
+
+## 📌 Sumário
+
+- [1. Business Understanding](#1-business-understanding)
+- [2. Data Understanding](#2-data-understanding)
+- [3. Data Preparation](#3-data-preparation)
+- [4. Modeling](#4-modeling)
+- [5. Evaluation](#5-evaluation)
+- [6. Deployment](#6-deployment)
+- [7. Notas Técnicas](#7--notas-técnicas)
+
+---
+
+## 1. Business Understanding
+
+### 1.1 Objetivo do Negócio
+
+Automatizar a classificação de empresas por CNAE com uso de:
+
+- 📅 Dados atualizados periodicamente
+- 🔔 Notificações de novas empresas
+- 🧵 Fila de processamento segmentada por setor
+
+Tecnologias utilizadas:
+- Apache Airflow (orquestração)
+- RabbitMQ (mensageria)
+- MongoDB (banco de dados)
+- Python + Pandas (manipulação dos dados)
+
+### 1.2 Avaliação da Situação
+
+- **Stakeholders:** Equipes de dados, ETL, risco e gestão.
+- **Plataformas utilizadas:**
+  - Apache Airflow, Docker
+  - MongoDB + Mongo Compass
+  - RabbitMQ
+  - Python, Pandas, NumPy
+- **Benefícios esperados:**
+  - 🚀 Eficiência no fluxo de dados
+  - 🔄 Atualização automática
+  - 📦 Categorias bem definidas
+- **Restrições:** Dados inconsistentes ou desatualizados
+
+### 1.3 Metas
+
+- Detectar e categorizar novas empresas por CNAE
+- Enviar dados via filas RabbitMQ por setor
+- Automatizar tudo com Airflow
+
+### 1.4 Plano do Projeto
+
+1. 📥 Coletar dados
+2. 🔎 Identificar novas empresas
+3. 🏷️ Categorizar por CNAE
+4. 📨 Enviar para RabbitMQ
+5. 🛠️ Automatizar com DAGs
+6. 🧩 Monitorar e ajustar
+
+---
+
+## 2. Data Understanding
+
+### 2.1 Fonte dos Dados
+
+Arquivos CSV com:
+
+- CNPJ
+- Nome
+- CNAE principal e secundário
+- UF
+
+### 2.2 Campos Relevantes
+
+| Campo           | Tipo   | Descrição                             |
+|----------------|--------|----------------------------------------|
+| CNPJ           | String | Identificador único da empresa         |
+| Nome           | String | Nome fantasia ou razão social          |
+| CNAE_Principal | String | Atividade principal                    |
+| CNAE_Secundario| Lista  | Atividades complementares              |
+| UF             | String | Estado                                 |
+
+### 2.3 Exploração dos Dados
+
+- 📊 Frequência dos CNAEs
+- 🗺️ Distribuição por UF
+- 🆕 Empresas detectadas em cada lote
+
+### 2.4 Qualidade dos Dados
+
+- ❌ Ausência de CNAEs
+- 🔁 CNPJs duplicados
+- ✅ Limpeza e padronização aplicadas
+
+---
+
+## 3. Data Preparation
+
+### 3.1 Seleção de Dados
+
+Utilizados: CNPJ, Nome, CNAE_Principal
+
+### 3.2 Limpeza
+
+- Remoção de duplicatas
+- Preenchimento de CNAEs ausentes com `"Não informado"`
+- Conversão de tipos
+
+### 3.3 Feature Engineering
+
+- Criação do campo `categoria` com base no mapeamento CNAE → setor
+
+### 3.4 Integração
+
+- Comparação com base anterior para encontrar empresas novas
+
+### 3.5 Formatação
+
+- Dados formatados em JSON para envio ao RabbitMQ
+
+---
+
+## 4. Modeling
+
+### 4.1 Abordagem
+
+🔧 Mapeamento determinístico (sem aprendizado de máquina)
+
+### 4.2 Testes
+
+- Simulações para garantir:
+  - 📍 Identificação de novas empresas
+  - 📤 Envio correto por categoria
+
+### 4.3 Pipeline
+
+- Scripts Python categorizando empresas
+- Publicação em filas por setor:
+  - `comercio`
+  - `industria`
+  - `servicos`
+  - `outros`
+
+### 4.4 Resultados
+
+- ✅ 100% de identificação
+- 📦 99,8% de envio correto para a fila
+
+---
+
+## 5. Evaluation
+
+### 5.1 Resultados
+
+- Automatização eficiente
+- Resultados consistentes com os objetivos
+
+### 5.2 Revisão
+
+- 🧪 Validação contínua
+- 🔄 Integração com pipeline em produção
+
+### 5.3 Próximos Passos
+
+- 🌍 Escalar para outros estados
+- 🤖 Explorar classificação inteligente com IA
+
+---
+
+## 6. Deployment
+
+### 6.1 Pipeline via Airflow
+
+- DAG diária executa:
+  - Leitura dos dados
+  - Comparação
+  - Categorização
+  - Publicação nas filas
+
+### 6.2 Monitoramento
+
+- Logs do Airflow
+- Dashboards do RabbitMQ
+- Verificação e reprocessamento de filas mortas
+
+### 6.3 Resumo
+
+| Item        | Resultado                         |
+|-------------|-----------------------------------|
+| ✅ Objetivo | Detecção de novas empresas        |
+| ⚙️ Ferramentas | Airflow, Python, MongoDB, RabbitMQ |
+| 💰 Custo     | Baixo (open-source)              |
+| 📈 Status    | Em produção                      |
+
+### 6.4 Revisão
+
+| ✅ Funcionou bem                  | ⚠️ Melhorias sugeridas                   |
+|-------------------------------|---------------------------------------|
+| DAG diária automatizada       | Considerar CNAEs secundários          |
+| Categorização precisa         | Adicionar modelo preditivo futuramente|
+
+---
+
+## ✅ Notas Técnicas
+
+### 📦 Tecnologias
+
+- Apache Airflow
+- RabbitMQ
+- MongoDB + Mongo Compass
+- Docker + Docker Compose
+- Python (Pandas, NumPy)
+
+### ⚙️ Setup Rápido
+
+> Pré-requisitos: Docker, Docker Compose, Mongo Compass
+
+```bash
+# Inicializar Airflow e MongoDB
+docker compose up airflow-init
+docker compose up -d
+
+# Acessar Airflow
+http://localhost:<porta>
+Usuário: airflow
+Senha: airflow
