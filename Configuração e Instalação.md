@@ -83,27 +83,27 @@ Clique em + Create e preencha para adicionar uma nova conexão:
         
         cd <caminho_para_a_pasta_descompactada>
         
-    - Execute o seguinte comando para acessar o container `airflow-apiserver`:
+  - Execute o seguinte comando para acessar o container `airflow-apiserver`:
         
-        ```docker exec -it airflow-airflow-apiserver-1 bash```
+     ```docker exec -it airflow-airflow-apiserver-1 bash```
         
-    - Dentro do container, execute o comando para instalar o provider MongoDB para Airflow:
+  - Dentro do container, execute o comando para instalar o provider MongoDB para Airflow:
         
-        ```pip install apache-airflow-providers-mongo```
+     ```pip install apache-airflow-providers-mongo```
         
-     - Saia do container:Bash
+  - Saia do container:Bash
         
-         ```exit```
+     ```exit```
         
-    - Reinicie o serviço `airflow-apiserver` para aplicar as alterações:Bash
+  - Reinicie o serviço `airflow-apiserver` para aplicar as alterações:Bash
         
-        ```docker-compose restart airflow-apiserver```
+     ```docker-compose restart airflow-apiserver```
         
-    - No campo "Extra Fields (JSON)", adicione a seguinte configuração:JSON
+  - No campo "Extra Fields (JSON)", adicione a seguinte configuração:JSON
     
-        ```{ "srv": null, "authSource": "admin", "ssl": false, "allow_insecure": null }```
+     ```{ "srv": null, "authSource": "admin", "ssl": false, "allow_insecure": null }```
     
-    - Clique no botão "Save" para salvar a conexão MongoDB.
+  - Clique no botão "Save" para salvar a conexão MongoDB.
 
 
 
