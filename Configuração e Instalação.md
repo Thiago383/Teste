@@ -39,23 +39,23 @@ Descompacte esse arquivo em um diretório à sua escolha.
 ### 4. Inicialização do Ambiente Docker
 Abra o terminal.
 
-Navegue até o diretório onde os arquivos foram descompactados:
+* Navegue até o diretório onde os arquivos foram descompactados:
 ```
 cd: bash
 cd <caminho_para_a_pasta_descompactada>
 ```
 
-Inicialize os serviços do Airflow:
+* Inicialize os serviços do Airflow:
 ```
 docker compose up airflow-init
 ```
 
-Após isso, execute:
+* Após isso, para iniciar os serviços do Airflow em modo detached (em segundo plano), execute:
 ``` 
 docker compose up -d
 ```
 
-A interface do Airflow estará disponível em http://localhost:<porta>.
+* O ambiente Docker com Airflow e MongoDB estará agora em execução. Para acessar a interface web do Airflow, localize a porta mapeada para o serviço web no Docker Desktop ou através da inspeção dos containers. A URL será similar a http://localhost:<porta>.
 
 🔑 Credenciais Padrão do Airflow:
 
