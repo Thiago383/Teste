@@ -81,14 +81,15 @@ A automação do processo será realizada com o uso de **Airflow** para orquestr
 ### 2.1 Coleta Inicial dos Dados
 As bases de dados são arquivos CSV fornecidos por um sistema externo ou API que contém o CNPJ, Nome, CNAE principal e secundário, entre outros campos.
 
-Arquivos CSV com:
+Arquivos:
 
 - CNPJ
 - Nome
 - CNAE principal e secundário
 - UF
 
-### 2.2 Campos Relevantes
+### 2.2 Descrição dos Dados
+Os campos principais analisados são: 
 
 | Campo           | Tipo   | Descrição                             |
 |----------------|--------|----------------------------------------|
@@ -102,7 +103,7 @@ Arquivos CSV com:
 
 - 📊 Frequência dos CNAEs
 - 🗺️ Distribuição por UF
-- 🆕 Empresas detectadas em cada lote
+- 🆕 Empresas novas detectadas em cada lote
 
 ### 2.4 Qualidade dos Dados
 
@@ -117,22 +118,23 @@ Arquivos CSV com:
 ### 3.1 Seleção de Dados
 
 Utilizados: CNPJ, Nome, CNAE_Principal
+Os demais campos foram descartados para manter o foco do projeto.
 
-### 3.2 Limpeza
+### 3.2 Limpeza dos Dados
 
 - Remoção de duplicatas
 - Preenchimento de CNAEs ausentes com `"Não informado"`
 - Conversão de tipos
 
-### 3.3 Feature Engineering
+### 3.3 Construção dos Dados
 
 - Criação do campo `categoria` com base no mapeamento CNAE → setor
 
 ### 3.4 Integração
 
-- Comparação com base anterior para encontrar empresas novas
+- Comparação de bases, unindo os dados novos com uma base anterior para detectar empresas novas
 
-### 3.5 Formatação
+### 3.5 Formatação dos Dados
 
 - Dados formatados em JSON para envio ao RabbitMQ
 
@@ -140,27 +142,29 @@ Utilizados: CNPJ, Nome, CNAE_Principal
 
 ## 4. Modeling
 
-### 4.1 Abordagem
+### 4.1 Técnicas de Modelagem
 
 🔧 Mapeamento determinístico (sem aprendizado de máquina)
 
-### 4.2 Testes
+### 4.2 Design de Testes
 
-- Simulações para garantir:
-  - 📍 Identificação de novas empresas
+- Testes unitários com registros simulados para CNAE e verificação de:
+  - 📍 Identificação de empresas novas
   - 📤 Envio correto por categoria
 
-### 4.3 Pipeline
+### 4.3 Construção de Modelo
 
-- Scripts Python categorizando empresas
-- Publicação em filas por setor:
+- Scripts Python categorizando empresas per CNAEs
+- Envio para RabbitMQ com base no setor
+- Criação de filas: 
   - `comercio`
   - `industria`
   - `servicos`
   - `outros`
 
-### 4.4 Resultados
+### 4.4 Avaliação de Modelo
 
+Testes em lote e em produção confirmam: 
 - ✅ 100% de identificação
 - 📦 99,8% de envio correto para a fila
 
@@ -168,20 +172,22 @@ Utilizados: CNPJ, Nome, CNAE_Principal
 
 ## 5. Evaluation
 
-### 5.1 Resultados
+### 5.1 Avaliação dos Resultados
 
-- Automatização eficiente
-- Resultados consistentes com os objetivos
+Resultados atendem os critérios:
+- Empresas novas detectadas e categorizadas
+- Sistema opera sem falhas em lote
 
-### 5.2 Revisão
+### 5.2 Revisão do Processo
 
+Processo segue o objetivo original com:
 - 🧪 Validação contínua
 - 🔄 Integração com pipeline em produção
 
 ### 5.3 Próximos Passos
 
 - 🌍 Escalar para outros estados
-- 🤖 Explorar classificação inteligente com IA
+- 🤖 Introduzir recomendação automatizada de crédito com base no CNAE
 
 ---
 
@@ -190,10 +196,10 @@ Utilizados: CNPJ, Nome, CNAE_Principal
 ### 6.1 Pipeline via Airflow
 
 - DAG diária executa:
-  - Leitura dos dados
-  - Comparação
+  - Leitura de novos dados
+  - Comparação com base anterior
   - Categorização
-  - Publicação nas filas
+  - Envio para RabbitMQ
 
 ### 6.2 Monitoramento
 
@@ -201,7 +207,7 @@ Utilizados: CNPJ, Nome, CNAE_Principal
 - Dashboards do RabbitMQ
 - Verificação e reprocessamento de filas mortas
 
-### 6.3 Resumo
+### 6.3 Relatótio Final
 
 | Item        | Resultado                         |
 |-------------|-----------------------------------|
@@ -210,12 +216,12 @@ Utilizados: CNPJ, Nome, CNAE_Principal
 | 💰 Custo     | Baixo (open-source)              |
 | 📈 Status    | Em produção                      |
 
-### 6.4 Revisão
+### 6.4 Revisão do Projeto
 
 | ✅ Funcionou bem                  | ⚠️ Melhorias sugeridas                   |
 |-------------------------------|---------------------------------------|
-| DAG diária automatizada       | Considerar CNAEs secundários          |
-| Categorização precisa         | Adicionar modelo preditivo futuramente|
+| Automação diária via Airflow  | Considerar CNAEs secundários       |
+| Categorização precisa         | Criação de uma base de treinamento futura para classificação com IA |
 
 ---
 
@@ -228,8 +234,17 @@ Utilizados: CNPJ, Nome, CNAE_Principal
 - MongoDB + Mongo Compass
 - Docker + Docker Compose
 - Python (Pandas, NumPy)
+- JSON: Formatação para envio
 
-### ⚙️ Setup Rápido
+### 🔁 Ciclo de Execução da DAG
+
+1. Trigger diaria do Airflow
+2. Leitura dos novos dados
+3. Comparação com CNPJs conhecidos
+4. Geração de `payloads` JSON
+5. Publicação nas filas por setor
+
+### ⚙️ Setup
 
 > Pré-requisitos: Docker, Docker Compose, Mongo Compass
 
