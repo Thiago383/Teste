@@ -1,4 +1,4 @@
-# 📘 Documentação Técnica
+# 📘 Configuração e Instalação 
 
 ## 📌 Sumário
 
@@ -105,7 +105,20 @@ Clique em + Create e preencha para adicionar uma nova conexão:
     
   - Clique no botão "Save" para salvar a conexão MongoDB.
 
+### 6. Configuração do Mongo Compass:
 
+- Abra o aplicativo Mongo Compass instalado.
+- Na tela inicial, clique em "Connect".
+- Na janela de conexão, insira a seguinte URL de conexão:
+    
+    `mongodb://root:example@localhost:27017/admin`
+    
+- Clique no botão "Connect".
+- O Mongo Compass deverá se conectar à instância MongoDB em execução no Docker.
+
+### Conclusão:
+
+Após seguir estes passos, o ambiente com MongoDB rodando em Docker, a interface gráfica Mongo Compass configurada para acesso e a conexão do MongoDB integrada ao Apache Airflow estarão estabelecidos e prontos para uso.
 
 
 
