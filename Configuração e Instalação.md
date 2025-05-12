@@ -37,7 +37,7 @@ Você deve receber um arquivo .zip com os arquivos necessários (ex: docker-comp
 Descompacte esse arquivo em um diretório à sua escolha.
 
 ### 4. Inicialização do Ambiente Docker
-Abra o terminal.
+* Abra o terminal.
 
 * Navegue até o diretório onde os arquivos foram descompactados:
 ```
