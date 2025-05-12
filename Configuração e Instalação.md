@@ -69,11 +69,12 @@ Vá em Admin > Connections.
 Clique em + Create e preencha para adicionar uma nova conexão:
 
 - Conn Id: 	```mongodb_default```
-- Conn Type: ```Mongo``` Se a opção "Mongo" não estiver disponível, siga as instruções no próximo sub-passo para instalar o provider
-- Host: ```mongodb``` Este é o nome do serviço MongoDB definido no arquivo ```docker-compose.yml```
-- Schema:	```admin```
-- Login: ```root```
+- Conn Type: ```mongo``` Se a opção "Mongo" não estiver disponível, siga as instruções no próximo sub-passo para instalar o provider
+- Host: ```mongo``` Este é o nome do serviço MongoDB definido no arquivo ```docker-compose.yml```
+- Username:	```root```
 - Password:	```example```
+- Port: ```27017``` 
+
 
 
 **Instalação do Provider MongoDB (se necessário):**
